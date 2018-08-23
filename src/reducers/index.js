@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux';//combine all reducer(module)
 import products from './products';
 
 const appReducers = combineReducers({

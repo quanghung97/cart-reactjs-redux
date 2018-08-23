@@ -17,10 +17,12 @@ class Products extends Component {
         );
     }
 
+    //index all products
     showProducts(products) {
         var result = null;
         if (products.length > 0) {
             result = products.map((product, index) => {
+                //add props for each product
                 return <Product key = {index} product = {product}/>
             });
         }
@@ -28,6 +30,7 @@ class Products extends Component {
     }
 }
 
+//change state : products in store -> props(products)
 const mapStateToProps = (state) => {
     return {
         products : state.products

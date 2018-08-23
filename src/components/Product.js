@@ -42,6 +42,7 @@ class Product extends Component {
         );
     }
 
+    //show rating
     showRatings(rating) {
         var result = [];
 
@@ -51,8 +52,6 @@ class Product extends Component {
             for(var j = 1; j <= (5-rating); j++) {
                 result.push(<i className="fa fa-star-o"></i>);
             }
-
-        //result.push('</li>');
         return result;
     }
 }
