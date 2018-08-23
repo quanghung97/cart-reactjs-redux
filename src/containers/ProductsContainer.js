@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 // redux store - ProductsContainer - Products(reactjs)// trung gian ket noi
 import Products from './../components/Products';
 import Product from './../components/Product';
+//import Prop types checking
+import PropTypes from 'prop-types';
 
 class ProductsContainer extends Component {
     render() {
@@ -26,6 +28,20 @@ class ProductsContainer extends Component {
         return result;
     }
 }
+
+//checking props types in products
+ProductsContainer.propTypes = {
+  products : PropTypes.arrayOf(
+      PropTypes.shape({
+          id : PropTypes.number.isRequired,
+          name : PropTypes.string.isRequired,
+          image : PropTypes.string.isRequired,
+          description : PropTypes.string.isRequired,
+          inventory : PropTypes.number.isRequired,
+          rating : PropTypes.number.isRequired
+      })
+  ).isRequired
+};
 
 //change state : products in store -> props(products)
 const mapStateToProps = (state) => {
