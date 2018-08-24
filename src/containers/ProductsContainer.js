@@ -6,6 +6,7 @@ import Product from './../components/Product';
 //import Prop types checking
 import PropTypes from 'prop-types';
 import { actAddToCart } from './../actions/index';
+import { actChangeMessage } from './../actions/index';
 
 class ProductsContainer extends Component {
     render() {
@@ -20,7 +21,7 @@ class ProductsContainer extends Component {
     //index all products
     showProducts(products) {
         var result = null;
-        var { onAddToCart } = this.props;
+        var { onChangeMessage, onAddToCart } = this.props;
         if (products.length > 0) {
             result = products.map((product, index) => {
                 //add props for each product
@@ -28,6 +29,7 @@ class ProductsContainer extends Component {
                              key = {index}
                              product = {product}
                              onAddToCartInChild = {onAddToCart} //action to props send this prop onAddToCartInChild to Product and run with param
+                             onChangeMessage = { onChangeMessage }
                          />
             });
         }
@@ -46,7 +48,8 @@ ProductsContainer.propTypes = {
           inventory : PropTypes.number.isRequired,
           rating : PropTypes.number.isRequired
       })
-  ).isRequired
+  ).isRequired,
+  onChangeMessage : PropTypes.func.isRequired
 };
 
 //change state : products in store -> props(products)
@@ -60,6 +63,9 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         onAddToCart : (product) => {
             dispatch(actAddToCart(product, 1));//config dispatch prepare to get data in actions with props onAddToCartInChild
+        },
+        onChangeMessage : (message) => {
+            dispatch(actChangeMessage(message));
         }
     }
 }

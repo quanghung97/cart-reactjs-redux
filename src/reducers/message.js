@@ -5,9 +5,9 @@ var initialState = Message.MSG_WELCOME;
 
 const message = (state = initialState, action) => {
     switch (action.type) {
-        case types.ADD_TO_CART:
+        case types.CHANGE_MESSAGE:
 
-            return [...state];
+            return action.message;
         default: return [...state];
 
     }
