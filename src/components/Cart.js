@@ -20,8 +20,7 @@ class Cart extends Component {
                         </thead>
                         <tbody>
                             { this.props.children }
-                            <CartResult />
-                            
+
                         </tbody>
                     </table>
                 </div>
