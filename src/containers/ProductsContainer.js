@@ -5,6 +5,7 @@ import Products from './../components/Products';
 import Product from './../components/Product';
 //import Prop types checking
 import PropTypes from 'prop-types';
+import { actAddToCart } from './../actions/index';
 
 class ProductsContainer extends Component {
     render() {
@@ -19,10 +20,15 @@ class ProductsContainer extends Component {
     //index all products
     showProducts(products) {
         var result = null;
+        var { onAddToCart } = this.props;
         if (products.length > 0) {
             result = products.map((product, index) => {
                 //add props for each product
-                return <Product key = {index} product = {product}/>
+                return <Product
+                             key = {index}
+                             product = {product}
+                             onAddToCartInChild = {onAddToCart} //action to props send this prop onAddToCartInChild to Product and run with param
+                         />
             });
         }
         return result;
@@ -50,4 +56,12 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, null)(ProductsContainer);
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        onAddToCart : (product) => {
+            dispatch(actAddToCart(product, 1));//config dispatch prepare to get data in actions with props onAddToCartInChild
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);
