@@ -64,7 +64,10 @@ CartContainer.propTypes = {
           rating : PropTypes.number.isRequired
       }).isRequired,
       quantity : PropTypes.number.isRequired
-  })).isRequired
+  })).isRequired,
+  onDeleteProductInCart : PropTypes.func.isRequired,
+  onChangeMessage : PropTypes.func.isRequired,
+  onUpdateProductInCart : PropTypes.func.isRequired
 };
 
 //change state : Cart in store -> props(products)

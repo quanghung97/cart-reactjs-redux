@@ -8,7 +8,7 @@ const message = (state = initialState, action) => {
         case types.CHANGE_MESSAGE:
 
             return action.message;
-        default: return [...state];
+        default: return state;
 
     }
 }
